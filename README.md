@@ -13,6 +13,38 @@ The primary objective was to encounter modern, out-of-the-box operating system h
 
 ---
 
+## Detection Engineering Outcomes
+
+### Detection 1 – Excessive Failed Authentication Attempts
+
+![Excessive Failed Authentication Alert](images/detections/4625-excessive-failed-logons.gif)
+
+**Objective**
+
+Detect repeated failed authentication attempts against local or domain accounts.
+
+**Detection Logic**
+
+```kql
+event.code:4625
+```
+
+Rule triggers when multiple failed authentication attempts are observed within a five-minute window.
+
+**Alert Validation**
+
+Successfully generated multiple failed authentication events and verified alert creation within Elastic Security.
+
+**Why This Matters**
+
+Repeated authentication failures are frequently associated with password spraying, brute-force activity, credential misuse, or account enumeration attempts. This detection serves as a foundational authentication monitoring control within the lab environment.
+
+**MITRE ATT&CK**
+
+- T1110 – Brute Force
+
+---
+
 ## Adversarial Phase 1: Local Credential Dumping (MITRE ATT&CK T1003.001)
 
 ### 1. Baseline Architectural Barriers Encountered
